@@ -7,7 +7,7 @@ from typing import Union
 
 
 @dataclass
-class CustomerInstance:
+class EmployeeInstance:
     """
     A local Customer instance, not dependent on the database.
     """

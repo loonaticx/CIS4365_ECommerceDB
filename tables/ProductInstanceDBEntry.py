@@ -25,11 +25,13 @@ class ProductInstanceDBEntry(Base):
     id = Column(Integer, primary_key = True, autoincrement = True)
     name = Column(String(64))
     uuid = db.Column(db.String(Config.UUID_TOKEN_LENGTH), unique = True)
+    # shopping_cart_id = Column(Integer, ForeignKey("ShoppingCart.id"))
+    # shopping_cart = relationship('ShoppingCartInstanceDBEntry', foreign_keys = [shopping_cart_id])
 
-    product_warehouse = relationship(
-        "WarehouseItemDBEntry",
-        back_populates="child"
-    )
+    # product_warehouse = relationship(
+    #     "WarehouseItemDBEntry",
+    #     back_populates="child"
+    # )
 
 
     def __init__(self, productInstance: ProductInstance):

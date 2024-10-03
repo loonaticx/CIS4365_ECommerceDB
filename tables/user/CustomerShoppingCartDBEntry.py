@@ -9,20 +9,20 @@ NOT GUESTS
 """
 
 
-class PurchaseRecordInstanceDBEntry(Base):
+class CustomerShoppingCartDBEntry(Base):
     """
     Skeleton for a db entry in the teacher table.
 
     Will be added into the database upon init
     """
 
-    __tablename__ = "PurchaseRecord"
+    __tablename__ = "CustomerShoppingCart"
 
     id = Column(Integer, primary_key = True, autoincrement = True)
     uuid = db.Column(db.String(Config.UUID_TOKEN_LENGTH), unique = True)
-    product_id = Column(Integer, ForeignKey("Product.id"))
-    product = relationship("ProductInstanceDBEntry", foreign_keys = [product_id])
-    name = Column(db.String(512), default = '')
+
+    # customer = relationship("CustomerInstanceDBEntry", back_populates = "shopping_cart")
+    # products = relationship("ProductInstanceDBEntry", back_populates = "shopping_cart")
 
     def __init__(self, purchaseRecord: PurchaseRecordInstance):
         self.name = purchaseRecord.product.name

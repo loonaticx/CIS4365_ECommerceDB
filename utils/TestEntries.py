@@ -2,8 +2,8 @@ from base.DatabaseDriver import *
 
 
 # Test account
-from tables.AccountInstanceDBEntry import AccountInstanceDBEntry
-from tables.AccountInstance import AccountInstance
+from tables.user.AccountInstanceDBEntry import AccountInstanceDBEntry
+from tables.user.AccountInstance import AccountInstance
 testAccount = AccountInstance(
     username = "test",
     email = "",
@@ -16,9 +16,8 @@ Database.generateEntry(testAccountDB)
 
 
 
-from tables.CustomerInstanceDBEntry import CustomerInstanceDBEntry
-from tables.CustomerInstance import CustomerInstance
-from tables.PersonalInfoInstance import PersonalInfoInstance
+from tables.user.CustomerInstanceDBEntry import CustomerInstanceDBEntry
+from tables.user.PersonalInfoInstance import PersonalInfoInstance
 personalInfo = PersonalInfoInstance(
     first_name = "test",
     last_name = "test",

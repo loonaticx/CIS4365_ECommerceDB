@@ -2,7 +2,7 @@ from sqlalchemy.orm import Mapped, mapped_column
 
 from base.DatabaseDriver import *
 
-from tables.AccountInstance import AccountInstance
+from tables.user.AccountInstance import AccountInstance
 
 # https://stackoverflow.com/questions/37908767/table-roles-users-is-already-defined-for-this-metadata-instance
 class AccountInstanceDBEntry(Base):
@@ -12,7 +12,7 @@ class AccountInstanceDBEntry(Base):
     Will be added into the database upon init
     """
 
-    __tablename__ = "accounts"
+    __tablename__ = "Account"
 
     id: Mapped[int] = mapped_column(primary_key = True)
     uuid = db.Column(db.String(Config.UUID_TOKEN_LENGTH), unique = True)

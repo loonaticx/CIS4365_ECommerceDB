@@ -20,13 +20,13 @@ class WarehouseItemDBEntry:
 
     warehouse_id: Mapped[int] = mapped_column(ForeignKey("Warehouse.id"), primary_key=True)
     product_id: Mapped[int] = mapped_column(
-        ForeignKey("product.id"),
+        ForeignKey("Product.id"),
         primary_key=True
     )
     extra_data: Mapped[Optional[str]]
 
-    # association between Assocation -> Child
-    child: Mapped["ProductInstance"] = relationship(back_populates="product_warehouse")
-
-    # association between Assocation -> Parent
-    parent: Mapped["WarehouseInstance"] = relationship(back_populates="products")
+    # # association between Assocation -> Child
+    # child: Mapped["ProductInstance"] = relationship(back_populates="product_warehouse")
+    #
+    # # association between Assocation -> Parent
+    # parent: Mapped["WarehouseInstance"] = relationship(back_populates="products")

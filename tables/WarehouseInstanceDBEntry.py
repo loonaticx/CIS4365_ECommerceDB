@@ -16,7 +16,9 @@ class WarehouseInstanceDBEntry(Base):
     id: Mapped[int] = mapped_column(primary_key = True)
     uuid = db.Column(db.String(Config.UUID_TOKEN_LENGTH), unique = True)
     name = Column(String(64))
-    products = relationship("ProductInstanceDBEntry", back_populates = "Warehouse")
+    # products = relationship("WarehouseItemDBEntry", back_populates = "child")
+    # products = relationship("WarehouseItemDBEntry")
+
 
     def __init__(self, warehouseInstance: WarehouseInstance):
         self.name = warehouseInstance.name

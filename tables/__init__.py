@@ -1,7 +1,15 @@
-from tables.AccountInstance import AccountInstance
-from tables.AccountInstanceDBEntry import AccountInstanceDBEntry
 from tables.ProductInstance import ProductInstance
 from tables.ProductInstanceDBEntry import ProductInstanceDBEntry
 from tables.PurchaseRecordInstance import PurchaseRecordInstance
 from tables.PurchaseRecordInstanceDBEntry import PurchaseRecordInstanceDBEntry
 from tables.WarehouseItemDBEntry import WarehouseItemDBEntry
+
+from tables.user.AccountInstance import AccountInstance
+from tables.user.AccountInstanceDBEntry import AccountInstanceDBEntry
+from tables.user.CustomerInstance import CustomerInstance
+from tables.user.CustomerInstanceDBEntry import CustomerInstanceDBEntry
+from tables.user.PersonalInfoInstance import PersonalInfoInstance
+from tables.user.PersonalInfoInstanceDBEntry import PersonalInfoInstanceDBEntry
+from tables.user.CustomerShoppingCart import CustomerShoppingCart
+from tables.user.CustomerShoppingCartDBEntry import CustomerShoppingCartDBEntry
+

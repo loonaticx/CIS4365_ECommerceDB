@@ -1,6 +1,7 @@
-from tables.CustomerInstanceDBEntry import CustomerInstanceDBEntry
-from tables.PersonalInfoInstance import PersonalInfoInstance
-
+from tables.user.AccountInstance import AccountInstance
+from tables.user.CustomerInstanceDBEntry import CustomerInstanceDBEntry
+from tables.user.PersonalInfoInstance import PersonalInfoInstance
+from base.DatabaseDriver import *
 personal_info = PersonalInfoInstance(
     first_name = "John",
     middle_initial = "D",
@@ -10,13 +11,31 @@ personal_info = PersonalInfoInstance(
     zip_code = "12345"
 )
 
+cust_account = AccountInstance(
+    username = "",
+    email = "em",
+    pass_hash = "",
+    registered_on = "",
+    last_login = ""
+)
+
+
 class CustomerGenerator:
 
     def __init__(self, database):
         self.database = database
+        create_account = False
 
-    def _generateCustomer(self) -> FacilityInstanceDBEntry:
-        return CustomerInstanceDBEntry(personal_info)
+    def _generateCustomer(self) -> CustomerInstanceDBEntry:
+        return CustomerInstanceDBEntry(personal_info, cust_account)
+
+    def generateCustomers(self, numCustomers:int=1):
+        generatedCustomers = []
+        for _ in range(numCustomers):
+            customer = self._generateCustomer()
+            self.database.generateEntry(customer)
+            generatedCustomers.append(customer)
+        return generatedCustomers
 
 
 
@@ -28,7 +47,7 @@ if __name__ == "__main__":
     # database = DatabaseManager(Config)
     # database.initSession()
 
-    facilityAmt = 2
-    for genDaycare in DaycareGenerator(Database).generateDaycares(facilityAmt, (1, 10)):
-        Database.generateEntry(genDaycare)
-    print(f"Generated {facilityAmt} daycares!")
+    customerAmt = 1
+    for generatedCustomer in CustomerGenerator(Database).generateCustomers(customerAmt):
+        Database.generateEntry(generatedCustomer)
+    print(f"Generated {customerAmt} customers!")
